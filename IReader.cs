@@ -2,5 +2,5 @@
 
 public interface IReader
 {
-     String[] GetWords();
+     String[] GetWords(string pathName);
 }

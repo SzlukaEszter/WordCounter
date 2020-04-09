@@ -7,9 +7,9 @@ namespace WordCounter
     {
         static void Main(string[] args)
         {
-            FileReader fileReader = new FileReader();
+            IReader reader = new FileReader();
 
-           string[] allWords = fileReader.GetWords("./TestText.txt");
+           string[] allWords = reader.GetWords("./TestText.txt");
 
             Console.WriteLine("All words in file :");
             foreach (string word in allWords)

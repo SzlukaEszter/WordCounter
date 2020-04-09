@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-public class FileReader
+public class FileReader : IReader
 {
 	public String[] GetWords(string pathName)
 	{
