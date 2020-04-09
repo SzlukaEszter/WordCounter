@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WordCounter
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             IReader reader = new UrlReader();
             string content;
             try
             {
-                content = reader.ReadContent("https://raw.githubusercontent.com/SzlukaEszter/WordCounter/master/TestText.txt");
+                content = await reader.ReadContentAsync("https://raw.githubusercontent.com/SzlukaEszter/WordCounter/master/TestText.txt");
             }
             catch (CouldNotReadException e)
             {
@@ -19,14 +20,14 @@ namespace WordCounter
                 return;
             }
 
-            string[] allWords = GetWordsFromText(content);
+            String[] allWords = GetWordsFromText(content);
 
             Console.WriteLine("All words in file :");
             foreach (string word in allWords)
             {
                 Console.WriteLine(word);
             }
-
+            
             Dictionary<string, int> wordCounts = CountWords(allWords);
             Console.WriteLine("The count of words:");
             foreach (var keyValue in wordCounts)
@@ -47,7 +48,7 @@ namespace WordCounter
 
         static Dictionary<string, int> CountWords(string [] words) 
         {
-            Dictionary<string, int> counter = new Dictionary<string, int>();
+            var counter = new Dictionary<string, int>();
 
             foreach (string word in words)
             {
@@ -62,6 +63,15 @@ namespace WordCounter
 
             }
             return counter;
+        }
+
+
+        static void Valami(int i)
+        {
+            int? k = 5;
+            k = null;
+
+            int c = (int)k;
         }
     }
 }

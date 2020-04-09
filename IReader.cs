@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 public interface IReader
 {
-     string ReadContent(string pathName);
+    Task<string> ReadContentAsync(string pathName);
 }

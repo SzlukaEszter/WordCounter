@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="TestText.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

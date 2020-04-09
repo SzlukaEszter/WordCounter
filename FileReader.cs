@@ -1,18 +1,23 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 
 public class FileReader : IReader
 {
-	public string ReadContent(string pathName)
-	{
+	public async Task<string> ReadContentAsync(string pathName)
+	{ 
 		try
-		{
-			return File.ReadAllText(pathName);
+		{	Task<string> tsk = File.ReadAllTextAsync(pathName);
+			string str = await tsk;
+
+			return str;
 		}
 		catch (FileNotFoundException e)
 		{ 
-			throw new CouldNotReadException(e.Message);
+			throw new CouldNotReadException(e.Message);			 
 		}
 	}
 
+	public async Task Method()
+	{ }
 }
