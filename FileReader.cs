@@ -3,12 +3,9 @@ using System.IO;
 
 public class FileReader : IReader
 {
-	public String[] GetWords(string pathName)
+	public string ReadContent(string pathName)
 	{
-		string text = File.ReadAllText(pathName);
-		string[] separators = { " ", ".", ",", "!", ":", ";", "-", "?", "(", ")", "{", "}", "[", "]","\'", "\r\n", "\t" };
-		string[] wordArr = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-		return wordArr;
+		return File.ReadAllText(pathName);
 	}
 
 }

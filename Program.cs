@@ -9,7 +9,9 @@ namespace WordCounter
         {
             IReader reader = new FileReader();
 
-           string[] allWords = reader.GetWords("./TestText.txt");
+            string content = reader.ReadContent("./TestText.txt");
+
+            string[] allWords = GetWordsFromText(content);
 
             Console.WriteLine("All words in file :");
             foreach (string word in allWords)
@@ -26,6 +28,13 @@ namespace WordCounter
 
             Console.ReadKey();
 
+        }
+
+        private static string[] GetWordsFromText(string text)
+        {
+            string[] separators = { " ", ".", ",", "!", ":", ";", "-", "?", "(", ")", "{", "}", "[", "]", "\'", "\r\n", "\t" };
+            string[] wordArr = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            return wordArr;
         }
 
         static Dictionary<string, int> CountWords(string [] words) 
