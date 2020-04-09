@@ -7,9 +7,9 @@ namespace WordCounter
     {
         static void Main(string[] args)
         {
-            IReader reader = new FileReader();
+            IReader reader = new UrlReader();
 
-            string content = reader.ReadContent("./TestText.txt");
+            string content = reader.ReadContent("https://raw.githubusercontent.com/SzlukaEszter/WordCounter/master/TestText.txt");
 
             string[] allWords = GetWordsFromText(content);
 
