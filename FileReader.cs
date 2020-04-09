@@ -3,22 +3,12 @@ using System.IO;
 
 public class FileReader
 {
-	public FileReader(string fileName)
+	public String[] GetWords(string pathName)
 	{
-		this.FileName = fileName;
-	}
-
-	public string FileName {get; set;}
-
-	public String[] GetWords()
-	{
-		string text = File.ReadAllText(FileName);
+		string text = File.ReadAllText(pathName);
 		string[] separators = { " ", ".", ",", "!", ":", ";", "-", "?", "(", ")", "{", "}", "[", "]","\'", "\r\n", "\t" };
 		string[] wordArr = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 		return wordArr;
 	}
-
-
-
 
 }
