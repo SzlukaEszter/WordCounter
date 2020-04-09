@@ -7,7 +7,7 @@ namespace WordCounter
     {
         static void Main(string[] args)
         {
-            FileReader fileReader = new FileReader("C:/Users/EszterSzluka/source/repos/WordCounter/TestText.txt");
+            FileReader fileReader = new FileReader("./TestText.txt");
 
            string[] allWords = fileReader.GetWords();
 
