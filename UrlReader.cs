@@ -6,7 +6,14 @@ public class UrlReader : IReader
 	public string ReadContent(string pathName)
 	{
 		HttpClient client = new HttpClient();
-		return client.GetStringAsync(pathName).Result;
+		try
+		{
+			return client.GetStringAsync(pathName).Result;
+		}
+		catch (System.AggregateException e)
+		{
+			throw new CouldNotReadException(e.Message);
+		}
 
 	}
 }

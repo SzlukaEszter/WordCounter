@@ -8,8 +8,16 @@ namespace WordCounter
         static void Main(string[] args)
         {
             IReader reader = new UrlReader();
-
-            string content = reader.ReadContent("https://raw.githubusercontent.com/SzlukaEszter/WordCounter/master/TestText.txt");
+            string content;
+            try
+            {
+                content = reader.ReadContent("https://raw.githubusercontent.com/SzlukaEszter/WordCounter/master/TestText.txt");
+            }
+            catch (CouldNotReadException e)
+            {
+                Console.WriteLine("Sorry, could not read: {0}", e.Message);
+                return;
+            }
 
             string[] allWords = GetWordsFromText(content);
 
