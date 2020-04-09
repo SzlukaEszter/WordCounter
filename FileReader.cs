@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 public class FileReader
 {
@@ -8,6 +9,16 @@ public class FileReader
 	}
 
 	public string FileName {get; set;}
+
+	public String[] GetWords()
+	{
+		string text = File.ReadAllText(FileName);
+		string[] separators = { " ", ".", ",", "!", ":", ";", "-", "?", "(", ")", "{", "}", "[", "]","\'", "\r\n", "\t" };
+		string[] wordArr = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+		return wordArr;
+	}
+
+
 
 
 }
